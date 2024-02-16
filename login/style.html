@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="index1.css" />
+  <style>
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px; 
+    }
+    .button-group button {
+      flex: 1;
+      margin-right: 5px; 
+    }
+  </style>
+</head>
+<body>
+  <div class="full-page">
+    <div class="navbar">
+      <nav>
+        <ul>
+          <li><button class='signinbtn' onclick="toggleForm('signin-form')" style="width:auto;">Sign in</button></li>
+          <li><button class='loginbtn' onclick="toggleLogin('login-form')" style="width:auto;">Login</button></li>
+          <li><button id="signout-btn" class='signoutbtn' onclick="signOut()" style="width:auto; ">Sign out</button></li>
+
+        </ul>
+      </nav>
+    </div>
+    <div id='signin-form'class='login-page' style="display: none;">
+      <div class="form-box">
+        <div class='button-box'>
+          <h1>Sign in</h1>
+          <form id="signin" class="input-group-signin">
+            <input type="text" class="input-field" placeholder="First Name" required>
+            <input type="text" class="input-field" placeholder="Last Name" required>
+            <input type="email" class="input-field" placeholder="Email Id" required>
+            <input type="password" class="input-field" placeholder="Enter Password" required>
+            <input type="password" class="input-field" placeholder="Confirm password" required>
+            <input type="checkbox" class="check-box"><span>I agree terms and conditions</span>
+            <div class="button-group">
+            <button type="submit" class="submit-btn">Sign in</button>
+            <button type="reset" class="submit-btn">Reset</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id='login-form'class='login-page' style="display: none;">
+      <div class="form-box">
+        <div class='button-box'>
+          <h1>Login</h1>
+          <form id="login" class="input-group-login">
+            <input type="email" class="input-field" placeholder="Email Id" required>
+            <input type="password" class="input-field" placeholder="Password" required>
+            <input type="checkbox" class="check-box"><span>Remember Password</span>
+            <div class="button-group">
+            <button type="submit" class="submit-btn">Login</button>
+        </div>
+          </form>
+        </div>
+      </div>
+    </div>
+ 
+    <script>
+      function toggleForm(signinbtn) {
+        var signinForm = document.getElementById('signin-form');
+        var loginForm = document.getElementById('login-form');
+
+        if (signinForm.style.display === 'none') {
+          signinForm.style.display = 'block';
+          loginForm.style.display = 'none';
+        } else {
+          signinForm.style.display = 'none';
+        }
+      }
+    
+      function toggleLogin(loginbtn) {
+        var loginForm = document.getElementById('login-form');
+        var signinForm = document.getElementById('signin-form');
+
+        if (loginForm.style.display === 'none') {
+          loginForm.style.display = 'block';
+          signinForm.style.display = 'none';
+        } else {
+          loginForm.style.display = 'none';
+        }
+      }
+      function signOut() {
+    
+        window.location.href = "signout.html";
+      }
+      window.onload = function() {
+     if (document.referrer.href.indexOf("signout.html") > -1) {
+           toggleLogin();
+     }
+      };
+    </script>
+    
+ 
+</body>
+</html>
